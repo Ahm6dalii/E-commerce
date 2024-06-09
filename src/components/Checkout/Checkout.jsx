@@ -5,13 +5,14 @@ import { CardContext } from '../../context/CardContext'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { HelmetProvider,Helmet } from 'react-helmet-async'
+import { useNavigate } from 'react-router-dom'
 
 export default function Checkout() {
  let[cartID,setCartId]= useState(0)
  let[orderPay,setOrderPay]= useState('')
  let[isCashLoading,setCashLoading]=useState(true)
  let[isOnlineLoading,setOnlineLoading]= useState(true)
-
+let navigate=useNavigate();
   let{getCard,setCardNumber}=useContext(CardContext)
   useEffect(()=>{
     getCardItems()
@@ -31,9 +32,11 @@ export default function Checkout() {
   headers:{ token:localStorage.getItem('token')},
   data:{value}
  }
+
  try{
-  let res = await axios.request(opt)
+  let res = await axios.request(opt).r
   setCardNumber(0)
+  navigate('/allorders');
  }catch({response}){
    toast.error('fail to make order card is empty')
  }
@@ -95,7 +98,7 @@ setOnlineLoading(true)
     <title>FreshCart/Checkout</title>
   </Helmet>
     </HelmetProvider>
-    <section className='container mt-3 '>
+    <section className='container mt-3  px-2'>
       <h2 className='my-2 font-semibold text-[20px]'>Shippping Address</h2>
       <form className='flex flex-col gap-4' onSubmit={formik.handleSubmit}>
       <input type="text" value={formik.values.shippingAddress.city} name='shippingAddress.city'  onBlur={formik.handleBlur} onChange={formik.handleChange} className='rounded-lg py-1  '  placeholder='City..' />
