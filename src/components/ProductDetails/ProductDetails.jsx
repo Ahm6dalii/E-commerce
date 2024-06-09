@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import ImageGallery from "react-image-gallery";
 import ReactImageGallery from "react-image-gallery";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import RelatedProductSlider from './../RelatedProductSlider/RelatedProductSlider';
 
 export default function ProductDetails() {
   let { addToCard } = useContext(CardContext);
@@ -142,6 +143,8 @@ export default function ProductDetails() {
       </div>
       <h2 className="font-semibold text-[20px]">Popular Product</h2>
       <div className=" mb-3">
+               {/* <RelatedProductSlider relatedProduct={relatedProduct}/> */}
+
         <swiper-container
           className="swiper "
           autoplay-delay="2000"
@@ -150,52 +153,7 @@ export default function ProductDetails() {
         >
           {relatedProduct.map((product) => {
             return (
-              <swiper-slide key={product.id} >
-                <div className="  ">
-                  <div className="product shadow-lg  mt-2 ">
-                    <Link
-                      to={`/productDetails/${product.id}/${product.category.name}`}
-                    >
-                      <div className="sm:h-[240px] h-[150px]">
-                      <img
-                        src={product.imageCover}
-                        className="w-full h-full object-cover"
-                        alt={product.title}
-                      />
-                      </div>
-                      <div className="p-2">
-                        <h3 className="text-green-500 font-light text-[12px] sm:text-[16px]">
-                          {product.category.name}
-                        </h3>
-                        <p className="font-semibold text-[12px] sm:text-[16px]">
-                          {product.title.split(" ").slice(0, 2).join(" ")}
-                        </p>
-                        <div className="flex justify-between text-[13px] sm:text-[16px] items-center mb-7">
-                          <span className="font-semibold">
-                            {product.price}{" "}
-                            <span className="font-bold  text-green-500">
-                              EGP
-                            </span>
-                          </span>
-                          <span className="font-semibold">
-                            {product.ratingsAverage}{" "}
-                            <i className="fas fa-star text-yellow-400"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-
-                    <button
-                    disabled={isAddToCard}
-                      onClick={() => addProductToCard(product.id)}
-                      className="btn text-[12px] sm:text-[16px] text-white font-semibold w-[94%] ms-[1%] rounded-md absolute bottom-[-100px] transition-all duration-500"
-                    >
-                      {isAddToCard?<i className="fa-solid fa-spin fa-spinner"></i>:' Add to card'}
-                  
-                    </button>
-                  </div>
-                </div>
-              </swiper-slide>
+              <RelatedProductSlider key={product.id}  product={product}/>
             );
           })}
         </swiper-container>
