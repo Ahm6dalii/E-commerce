@@ -66,6 +66,27 @@ export default function ProductDetails() {
   }, [id]);
   useEffect(() => {
     getRelatedProduct(category);
+
+    // const swiperEl = document.querySelector('swiper-container')
+    // Object.assign(swiperEl, {
+    //   spaceBetween: 10,
+  
+    //   breakpoints: {
+    //     640: {
+    //       slidesPerView: 3,
+    //       spaceBetween: 20,
+    //     },
+    //     768: {
+    //       slidesPerView: 4,
+    //       spaceBetween: 40,
+    //     },
+    //     1024: {
+    //       slidesPerView: 5,
+    //       spaceBetween: 50,
+    //     },
+    //   },
+    // });
+    // swiperEl.initialize();
   }, []);
   const images = ProductsDetails?.images.map((img) => {
     return   {
@@ -92,7 +113,7 @@ export default function ProductDetails() {
         
           </div>
         </div>
-        <div className="md:w-2/4 ">
+        <div className="md:w-2/4 px-2 ">
           <h3 className="text-green-500 font-semibold text-[18px] ">
             {ProductsDetails?.category.name}
           </h3>
@@ -122,21 +143,22 @@ export default function ProductDetails() {
       <h2 className="font-semibold text-[20px]">Popular Product</h2>
       <div className="">
         <swiper-container
-          className="swiper  my-4"
+          className="swiper"
           autoplay-delay="2000"
-          slides-per-view={4}
+          space-between="0" 
+          slides-per-view={3}
         >
           {relatedProduct.map((product) => {
             return (
-              <swiper-slide key={product.id}>
-                <div className="  p-2">
-                  <div className="product shadow-lg">
+              <swiper-slide key={product.id} >
+                <div className=" py-2 ">
+                  <div className="product shadow-lg ">
                     <Link
                       to={`/productDetails/${product.id}/${product.category.name}`}
                     >
                       <img
                         src={product.imageCover}
-                        className="w-full"
+                        className="w-full h-64 object-cover "
                         alt={product.title}
                       />
                       <div className="p-2">
@@ -164,7 +186,7 @@ export default function ProductDetails() {
                     <button
                     disabled={isAddToCard}
                       onClick={() => addProductToCard(product.id)}
-                      className="btn text-white font-semibold w-full rounded-md absolute bottom-[-100px] transition-all duration-500"
+                      className="btn text-white font-semibold w-[94%] ms-[1%] rounded-md absolute bottom-[-100px] transition-all duration-500"
                     >
                       {isAddToCard?<i className="fa-solid fa-spin fa-spinner"></i>:' Add to card'}
                   
