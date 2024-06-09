@@ -12,7 +12,7 @@ export default function CartTable({updateQantityItems,cartDetails,isloadingRemov
   <table className="text-center w-fit  md:w-full md:text-sm text-xs  rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
      <tr>
-                <th scope="col" id='www' className="px-16 py-3">
+                <th scope="col" id='www' className="px-0 py-3">
                     <span className="sr-only">Image</span>
                 </th>
                 <th scope="col" className="px-1 py-3">
