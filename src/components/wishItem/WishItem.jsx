@@ -22,7 +22,7 @@ export default function WishItem({item,getWishListItem}) {
       if(data.status=='success'){
        toast.success('Removed From wish List Successfully !');
       }else{
-        toast.error('Failed to add to Wish List!')
+        toast.error('Failed to add to Wish List!');
       }
     }
     async function removeProductAfterAdd(producdId){
