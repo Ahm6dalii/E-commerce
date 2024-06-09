@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CardContext } from '../../context/CardContext';
 
-export default function CartProduct({product,updateQantityItems,setCartDetails,removeCardItems}) {
-    let{removeCard,setCardNumber}=useContext(CardContext)
+export default function CartProduct({product,setCartDetails,removeCardItems}) {
+    let{getCard,removeCard,cardNuber,setCardNumber,updateQantity,removeAllCard}=useContext(CardContext)
     let [isRemoveLoading,setRemoveLoading]=useState(false);
     let[productCount,setProductCount]=useState(product.count)
 
@@ -16,6 +16,18 @@ export default function CartProduct({product,updateQantityItems,setCartDetails,r
       console.log('ssssss',respose.data)
 
     }
+    async function updateQantityItems(productId,count){
+        if(count<1)
+            {
+                removeCardItems(productId)
+              
+            }else{
+                let respose= await updateQantity(productId,count);
+                setCartDetails(respose.data)
+                localStorage.setItem('cardNumber',respose.data?.numOfCartItems)
+            }
+    }
+  
   return (
     <tr key={product?.product?.id}  className=" pb-20 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
     <td className="py-4 pl-2 w-[10%]">

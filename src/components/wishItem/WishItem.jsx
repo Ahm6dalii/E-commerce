@@ -25,6 +25,11 @@ export default function WishItem({item,getWishListItem}) {
         toast.error('Failed to add to Wish List!')
       }
     }
+    async function removeProductAfterAdd(producdId){
+      let{data}=await deleteFromWishList(producdId);
+      setWishNumber(data?.data.length)
+       setRemoveWishLoading(false)
+    }
     async function addProductToCard(producdId){
      setAddLoading(true)
     let response=await addToCard(producdId);
@@ -51,7 +56,7 @@ export default function WishItem({item,getWishListItem}) {
           </div>
 
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-          <button  onClick={(isAddLoading)=> addProductToCard(item.id)} className="btn py-[1px] text-white font-normal   transition-all duration-500 rounded-md  "> {isAddLoading? <i className="fa-solid fa-spin fa-spinner"></i>:' Add to card'}</button>
+          <button  onClick={(isAddLoading)=> {addProductToCard(item.id),removeProductAfterAdd(item.id)}} className="btn py-[1px] text-white font-normal   transition-all duration-500 rounded-md  "> {isAddLoading? <i className="fa-solid fa-spin fa-spinner"></i>:' Add to card'}</button>
           
           </div>
         </div>

@@ -22,7 +22,6 @@ export default function Cart() {
       let respose= await getCard();
       setIsLoading(false)
       setCartDetails(respose.data)
-      console.log(respose.data)
     }
 
     async function updateQantityItems(productId,count){
@@ -36,7 +35,15 @@ export default function Cart() {
       localStorage.setItem('cardNumber',respose.data?.numOfCartItems)
 
     }
+    async function removeCardItems(productId){
+      // setRemoveLoading(true)
+    let respose= await removeCard(productId);
+    // setRemoveLoading(false)
+    localStorage.setItem('cardNumber',respose.data?.numOfCartItems)
+    setCartDetails(respose.data)
+    setCardNumber(respose.data.numOfCartItems)
 
+  }
     
     async function removeAllCardItems(productId){
         setIsLoadingClear(false)

@@ -19,21 +19,24 @@ export default function Register() {
       setLoading(false)
       navigate('/login')
       toast.success('User created successfully !')
-
-      console.log(data)
     })
     .catch(function(err){
-      setApiError(err.response.data.message)
-      setLoading(false)
-    console.log(err.response.data.message)
+      if(err.response.data.message=='fail')
+        {
+          setApiError("phone not valid must be egypt number ")
 
+        }else{
+          setApiError(err.response.data.message)
+
+        }
+      setLoading(false)
     }
   );
   }
 
 let validationSchema=Yup.object().shape({
   name:Yup.string().min(3,'Name must be greater than 2 character').max(10,'Name must be less than 10 character').required('Name is required'),
-  phone:Yup.string().matches(/^^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,'Enter a valid phone number') .required('Phone is required'),
+  phone:Yup.string().matches(/^^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{5}$/,'Enter a valid phone number').required('Phone is required'),
   email:Yup.string().matches(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,'Enter a valid email') .required('Email is required'),
   password:Yup.string().min(6,'Minimun length 6 letter').required('password is required'),
   rePassword:Yup.string().oneOf([Yup.ref('password')],'password must be matched').required('password is required'),
@@ -51,42 +54,7 @@ let validationSchema=Yup.object().shape({
     validationSchema
     
   });
-  function register(){
-    console.log(formik.values);
-  }
-  console.log(formik);
-
-  function validate(value){
-    let error={};
-    if(value.name==""){
-      error.name="Name is required"
-    }else if(value.name.length<3){
-      error.name="Name must be greater than 2 character"
-    }
-
-    if(value.phone==""){
-      error.phone="phonee is required"
-    }else if(!/^^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(formik.values.phone)){
-      error.phone="Enter valid Number"
-    }
-    if(value.email==""){
-      error.email="email is required"
-    }else if(!/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(formik.values.email)){
-      error.email="Enter valid email"
-    }
-    if(value.password==""){
-      error.password="password is required"
-    }else if(!/[^[A-Za-z0-9]{3,8}/.test(formik.values.email)){
-      error.password="Minimun length 3 letter"
-    }
-
-   if(formik.values.password!=formik.values.rePassword){
-      error.rePassword="password must be matched"
-    }
-
-    return error;
-
-  }
+ 
    
   return (
     <>
@@ -124,7 +92,7 @@ let validationSchema=Yup.object().shape({
   {formik.errors.password && formik.touched.password &&<p className='p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400'>{formik.errors.password}</p> }
 
   <div className="relative z-0 w-full  sm:mb-2 group">
-      <input onChange={formik.handleChange} onBlur={formik.handleBlur}  value={formik.values.rePassword} type="rePassword"  name="rePassword" id="floating_repeat_password" className="block py-2 sm:py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" "  />
+      <input onChange={formik.handleChange} onBlur={formik.handleBlur}  value={formik.values.rePassword} type="Password"  name="rePassword" id="floating_repeat_password" className="block py-2 sm:py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" "  />
       <label htmlFor="floating_repeat_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
   </div>
   {formik.errors.rePassword && formik.touched.rePassword &&<p className='p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400'>{formik.errors.rePassword}</p>} 

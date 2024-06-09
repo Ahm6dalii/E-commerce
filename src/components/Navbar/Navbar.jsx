@@ -139,11 +139,12 @@ export default function Navbar() {
                 {/* Profile dropdown */}
                {userLogin && <>
                 <div className='relative rounded-full bg-green-500 px-2 py-1 mr-3 text-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'>
-                  <i className='fa-solid fa-cart-shopping text-sm text-white'></i>
+                <Link to="/cart"> <i className='fa-solid fa-cart-shopping text-sm text-white'></i></Link> 
                   <p className='flex justify-center items-center absolute top-0 end-0 w-4 h-4 translate-x-1/2 -translate-y-1/2 bg-[#84CC16] text-white px-[1px] rounded-full'>{isCardLoading?<i className="fa-solid fa-spin fa-spinner"></i>:cardNuber}</p>
                 </div>
                 <div className='relative rounded-full bg-green-500 px-2 py-1 mr-3 text-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'>
-                  <i className='fa-solid fa-heart text-sm text-white'></i>
+                <Link to="/wish-list">  <i className='fa-solid fa-heart text-sm text-white'></i></Link> 
+                 
                   <p className='flex justify-center items-center absolute top-0 end-0 w-4 h-4 translate-x-1/2 -translate-y-1/2 bg-[#84CC16] text-white px-[1px] rounded-full'>{isLoadingWish?<i className="fa-solid fa-spin fa-spinner"></i>:wishNumber}</p>
                 </div>
 
@@ -221,16 +222,7 @@ export default function Navbar() {
                           </Link>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
+                  
                       <Menu.Item>
                         {({ active }) => (
                           <span

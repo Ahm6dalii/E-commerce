@@ -21,16 +21,13 @@ export default function ProductDetails() {
   const [relatedProduct, setRelatedProduct] = useState([]);
   const [isAddToCard, setAddToCard] = useState(false);
 
+  let headers={
+    token:localStorage.getItem('token')
+      }
   async function addProductToCard(producdId) {
     setAddToCard(true)
     let response = await addToCard(producdId);
     setAddToCard(false)
-
-  let headers={
-    token:localStorage.getItem('token')
-}
-
-
     setCardNumber(response.data?.numOfCartItems);
     localStorage.setItem("cardNumber", response.data?.numOfCartItems);
     if (response.data?.status == "success") {
@@ -67,27 +64,6 @@ export default function ProductDetails() {
   }, [id]);
   useEffect(() => {
     getRelatedProduct(category);
-
-    // const swiperEl = document.querySelector('swiper-container')
-    // Object.assign(swiperEl, {
-    //   spaceBetween: 10,
-  
-    //   breakpoints: {
-    //     640: {
-    //       slidesPerView: 3,
-    //       spaceBetween: 20,
-    //     },
-    //     768: {
-    //       slidesPerView: 4,
-    //       spaceBetween: 40,
-    //     },
-    //     1024: {
-    //       slidesPerView: 5,
-    //       spaceBetween: 50,
-    //     },
-    //   },
-    // });
-    // swiperEl.initialize();
   }, []);
   const images = ProductsDetails?.images.map((img) => {
     return   {

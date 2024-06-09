@@ -39,11 +39,16 @@ let[wishIDs,setWishIDs] =useState([])
 
   async function getCardInfo(){
     setCardLoading(true)
-    let {data} = await  axios.get('https://ecommerce.routemisr.com/api/v1/cart', {
+   await  axios.get('https://ecommerce.routemisr.com/api/v1/cart', {
       headers
-  })
-    setCardLoading(false)
+  }).then(({data})=>{
+    console.log(data)
     setCardNumber(data.numOfCartItems)
+  })
+  .catch((err)=>setCardNumber(0)
+)
+  // console.log('ddddd',data)
+    setCardLoading(false)
 
   }
 
@@ -68,10 +73,10 @@ let[wishIDs,setWishIDs] =useState([])
   }
 
   useEffect(()=>{
+    getCardInfo()
     gitAllWishList()
     // getWishCard()
     getProductData()
-    getCardInfo()
     try {
       let user=jwtDecode(localStorage.getItem('token'))
         setUserInfo(user) 
