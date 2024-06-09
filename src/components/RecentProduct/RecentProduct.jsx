@@ -99,7 +99,7 @@ if(isLoading)
         <input type="search" name=""  className='w-full mt-3 focus:border-none focus:ring-2 focus:shadow-green-500  focus:outline-none focus:ring-green-500 py-2 border-gray-500 rounded-full placeholder:text-xl ' placeholder="Search........." onInput={SearchINProduct} id="ser" />
       </div>
         <div className="flex flex-wrap pt-2 items-center  ">       
-        {(productSearched == '') && <div className='text-xl text-center bg-green-400 w-full py-2 rounded-full text-[#eee] '>No product found 🤔</div>}
+        {(productSearched == '') && <div className='text-xl mt-2 mb-3 text-center bg-green-400 w-full py-2 rounded-full text-[#eee] '>No product found 🤔</div>}
             {productSearched?productSearched.map((product) => {
            return <RecentProductCard key={product.id} product={product} wishIDs={wishIDs}/>
       }):productData?.map((product) => {
