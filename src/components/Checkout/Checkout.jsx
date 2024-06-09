@@ -34,7 +34,7 @@ let navigate=useNavigate();
  }
 
  try{
-  let res = await axios.request(opt).r
+  let res = await axios.request(opt)
   setCardNumber(0)
   navigate('/allorders');
  }catch({response}){
