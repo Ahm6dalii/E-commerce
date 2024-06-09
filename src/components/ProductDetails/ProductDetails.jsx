@@ -141,37 +141,39 @@ export default function ProductDetails() {
         </div>
       </div>
       <h2 className="font-semibold text-[20px]">Popular Product</h2>
-      <div className="">
+      <div className=" mb-3">
         <swiper-container
-          className="swiper"
+          className="swiper "
           autoplay-delay="2000"
-          space-between="0" 
+          space-between="4" 
           slides-per-view={3}
         >
           {relatedProduct.map((product) => {
             return (
               <swiper-slide key={product.id} >
-                <div className=" py-2 ">
-                  <div className="product shadow-lg ">
+                <div className="  ">
+                  <div className="product shadow-lg  mt-2 ">
                     <Link
                       to={`/productDetails/${product.id}/${product.category.name}`}
                     >
+                      <div className="sm:h-[240px] h-[150px]">
                       <img
                         src={product.imageCover}
-                        className="w-full h-64 object-cover "
+                        className="w-full h-full object-cover"
                         alt={product.title}
                       />
+                      </div>
                       <div className="p-2">
-                        <h3 className="text-green-500 font-light">
+                        <h3 className="text-green-500 font-light text-[12px] sm:text-[16px]">
                           {product.category.name}
                         </h3>
-                        <p className="font-semibold sm:text-[12px]">
+                        <p className="font-semibold text-[12px] sm:text-[16px]">
                           {product.title.split(" ").slice(0, 2).join(" ")}
                         </p>
-                        <div className="flex justify-between items-center mb-7">
+                        <div className="flex justify-between text-[13px] sm:text-[16px] items-center mb-7">
                           <span className="font-semibold">
                             {product.price}{" "}
-                            <span className="font-bold text-green-500">
+                            <span className="font-bold  text-green-500">
                               EGP
                             </span>
                           </span>
@@ -186,7 +188,7 @@ export default function ProductDetails() {
                     <button
                     disabled={isAddToCard}
                       onClick={() => addProductToCard(product.id)}
-                      className="btn text-white font-semibold w-[94%] ms-[1%] rounded-md absolute bottom-[-100px] transition-all duration-500"
+                      className="btn text-[12px] sm:text-[16px] text-white font-semibold w-[94%] ms-[1%] rounded-md absolute bottom-[-100px] transition-all duration-500"
                     >
                       {isAddToCard?<i className="fa-solid fa-spin fa-spinner"></i>:' Add to card'}
                   
