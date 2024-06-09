@@ -74,7 +74,7 @@ export default function RecentProductCard({product,wishIDs}) {
 
   return  <div   className=" sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 p-2" >
              <div className="product shadow-lg  rounded-lg hover:shadow hover:shadow-green-400">
-            <Link to={`productDetails/${product.id}/${product.category?.name}`}>
+            <Link to={`/productDetails/${product.id}/${product.category?.name}`}>
                 <img src={product.imageCover} className="w-full" alt={product.title} />
                </Link>
                <div className="p-3 ">
