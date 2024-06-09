@@ -82,11 +82,10 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>}  
               </div>
-              
-              <div className="flex ml-12 md:ml-0  items-center justify-center sm:items-stretch sm:justify-start ">
+              <div className={`flex ${ !userLogin?"ml-12":" "}ml-12 md:ml-0  items-center justify-center sm:items-stretch sm:justify-start`}>
                 <div className="flex flex-shrink-0 items-center">
               <svg data-name="Layer 1" className=' w-8' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.53 5 5 3H1.25a1 1 0 0 0 0 2h2.22L6.7 18H20v-2H8.26l-.33-1.34L21 12.17V5ZM19 10.52 7.45 12.71 6 7h13ZM7 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 7 19Zm12 0a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 19 19Z" fill="#0e9f6e" className="fill-000000"></path></svg>   
-              <h1 className='font-semibold text-[20pxnpm i swiper]' >
+              <h1 className='font-semibold text-[20px]' >
                             FreshCard
               </h1>
                 </div>
