@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.row{
+  @apply flex flex-wrap 
+}
+.active{
+  @apply text-gray-950 font-bold
+}
+.btn{
+  @apply bg-green-500 py-1  px-4 ;
+}
+.product{
+  @apply relative overflow-hidden;
+}
+.product:hover .btn,
+.product:hover .group-btn
+{
+@apply bottom-1 ;
+}
+table{
+  width: 80%;
+}
+ tr,td{
+  width:10%
+ }
