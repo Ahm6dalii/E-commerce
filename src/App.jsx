@@ -32,11 +32,11 @@ let query = new QueryClient();
 
 let router = createBrowserRouter([
   {
-    path: "/E-commerce/",
+    path: "",
     element:<Layout />,
     children: [
       {
-       path:"/E-commerce/",
+       path:"",
         element: (
           <ProtectedRoute>
             <Home />
