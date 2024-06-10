@@ -290,10 +290,7 @@ export default function Navbar() {
                             {({ active }) => (
                               <p
                                 href="#"
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
-                                )}
+                                className="dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
                               >
                                 {userInfo.name}
                               </p>
@@ -303,10 +300,8 @@ export default function Navbar() {
                             {({ active }) => (
                               <Link
                                 to="/allorders"
-                                className={classNames(
-                                  active ? "bg-gray-100 " : "",
-                                  " dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
-                                )}
+                                className="dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
+
                               >
                                 Orders
                               </Link>
@@ -315,11 +310,10 @@ export default function Navbar() {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="/cart"
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "dark:text-slate-100 dark:hover:bg-slate-600 dark:focus:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
-                                )}
+                                to="/cart"                         
+                                className="dark:text-slate-100 dark:hover:bg-slate-600 dark:focus:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
+
+
                               >
                                 <span> Cart</span>
                                 <span className="dark:text-slate-100  border rounded-full px-1 border-green-500">
@@ -336,10 +330,8 @@ export default function Navbar() {
                             {({ active }) => (
                               <Link
                                 to="/wish-list"
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
-                                )}
+                                className="dark:text-slate-100 dark:hover:bg-slate-600 dark:focus:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
+
                               >
                                 <span> Wish List</span>
                                 <span className="border rounded-full px-1 border-green-500">
@@ -358,10 +350,7 @@ export default function Navbar() {
                               <span
                                 href="#"
                                 onClick={signOut}
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700 cursor-pointer"
-                                )}
+                                className="dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
                               >
                                 Sign out
                               </span>
