@@ -21,7 +21,7 @@ export default function Footer() {
               className="form-control flex-grow"
               placeholder="Email...."
             />
-            <button className="btn">app link</button>
+            <button className="btn transition-all hover:bg-green-100 hover:text-green-500 hover:ring-green-400 hover ring-1 font-semibold text-white">app link</button>
           </div>
 
           <div className="flex flex-wrap justify-between items-center p-2 my-3">
