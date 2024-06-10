@@ -64,7 +64,7 @@ export default function Navbar() {
   return (
     <Disclosure
       as="nav"
-      className="bg-gray-100 fixed top-0 start-0 end-0 z-50 dark:bg-slate-700 dark:text-slate-100"
+      className="bg-gray-100 fixed top-0 start-0 end-0 z-50 dark:bg-gray-950 dark:text-slate-100"
     >
       {({ open }) => (
         <>
@@ -73,7 +73,7 @@ export default function Navbar() {
               <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
                 {/* Mobile menu button*/}
                 {userLogin && (
-                  <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 border text-gray-400 dark:border dark:border-sky-100  dark:hover:ring-slate-100 transition-all dark:hover:bg-slate-900 dark:hover:ring-2 hover:bg-gray-200 hover:ring-1 hover:ring-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Open main menu</span>
                     {open ? (
@@ -117,7 +117,7 @@ export default function Navbar() {
                           key={item.name}
                           to={item.href}
                           className={({ isActive }) => {
-                            return `dark:text-slate-100  p-1 mr-1 px-1 relative text-gray-600 hover:text-gray-900  before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:bg-green-500 hover:font-semibold before:w-0 hover:before:w-full before:transition-all before:duration-500 ${
+                            return `dark:text-slate-100 p-1 mr-1 px-1 relative text-gray-600 hover:text-gray-900  before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:bg-green-500 hover:font-semibold before:w-0 hover:before:w-full before:transition-all before:duration-500 ${
                               isActive
                                 ? "before:w-full font-semibold text-gray-900 "
                                 : ""
@@ -290,7 +290,7 @@ export default function Navbar() {
                             {({ active }) => (
                               <p
                                 href="#"
-                                className="dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
+                                className="dark:text-slate-100  dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
                               >
                                 {userInfo.name}
                               </p>
@@ -300,7 +300,7 @@ export default function Navbar() {
                             {({ active }) => (
                               <Link
                                 to="/allorders"
-                                className="dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
+                                className="dark:text-slate-100 hover:bg-gray-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
 
                               >
                                 Orders
@@ -311,7 +311,7 @@ export default function Navbar() {
                             {({ active }) => (
                               <Link
                                 to="/cart"                         
-                                className="dark:text-slate-100 dark:hover:bg-slate-600 dark:focus:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
+                                className="dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600 dark:focus:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
 
 
                               >
@@ -330,7 +330,7 @@ export default function Navbar() {
                             {({ active }) => (
                               <Link
                                 to="/wish-list"
-                                className="dark:text-slate-100 dark:hover:bg-slate-600 dark:focus:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
+                                className="dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600 dark:focus:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
 
                               >
                                 <span> Wish List</span>
@@ -350,7 +350,7 @@ export default function Navbar() {
                               <span
                                 href="#"
                                 onClick={signOut}
-                                className="dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
+                                className="dark:text-slate-100 hover:bg-gray-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
                               >
                                 Sign out
                               </span>
@@ -374,8 +374,8 @@ export default function Navbar() {
                   to={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-400 hover:bg-gray-700  hover:text-white",
+                      ? "bg-gray-900 text-white "
+                      : "text-gray-500 hover:bg-slate-200  hover:text-gray-900",
                     "block rounded-md px-3 py-2 dark:hover:bg-gray-500 text-base font-medium dark:text-slate-100 "
                   )}
                   aria-current={item.current ? "page" : undefined}
