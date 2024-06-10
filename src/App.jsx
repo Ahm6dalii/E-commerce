@@ -33,7 +33,7 @@ let query = new QueryClient();
 let router = createBrowserRouter([
   {
     path: "/E-commerce/",
-    element: <Layout />,
+    element:<Layout />,
     children: [
       {
        path:"/E-commerce/",
