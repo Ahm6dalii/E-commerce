@@ -28,7 +28,7 @@ export default function Categories() {
     <div className="flex flex-wrap pt-8 items-center  ">       
         {data?.data?.data.map((product) => {
          return  <div key={product._id} className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 p-2 " >
-        <div className="product shadow-lg pb-8">
+        <div className="product shadow-lg pb-8 dark:bg-slate-700">
            <Link to={`/categories/${product._id}`}>
              <img src={product.image} className="w-full  sm:h-40 object-cover" alt={product.title} />
              <div className="p-2">

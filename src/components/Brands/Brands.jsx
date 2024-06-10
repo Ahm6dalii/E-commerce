@@ -30,10 +30,10 @@ export default function Brands() {
         {brands?.data?.map((product) => {
           return (
             <div
-              className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 p-2 "
+              className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 p-2  "
               key={product._id}
             >
-              <div className="product shadow-lg pb-8">
+              <div className="product shadow-lg pb-8 dark:bg-slate-700">
                 <img
                   src={product.image}
                   className="w-full   object-cover"

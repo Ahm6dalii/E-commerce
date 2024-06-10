@@ -52,7 +52,7 @@ export default function WishItem({item,getWishListItem}) {
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm mb-1 text-black dark:text-gray-400 text-wrap "> {item.title}</p>
             <p className="truncate mb-1 text-sm font-medium text-green-500 dark:text-white">{item.price} EGP</p>
-         <button onClick={()=>removeProductFromWishList(item.id)} className=" py-[1px]  font-normal  bg-red-500 text-white transition-all duration-300 hover:text-red-500 hover:bg-white ml-auto p-3 rounded-xl dark:text-red-500 hover:outline hover:outline-1 hover:outline-red-500">{isRemoveWishLoading? <i className="fa-solid fa-spin fa-spinner"></i>:'Remove'}</button>
+         <button onClick={()=>removeProductFromWishList(item.id)} className=" dark:text-white dark:hover:text-red-500 py-[1px]  font-normal  bg-red-500 text-white transition-all duration-300 hover:text-red-500 hover:bg-white ml-auto p-3 rounded-xl  hover:outline hover:outline-1 hover:outline-red-500">{isRemoveWishLoading? <i className="fa-solid fa-spin fa-spinner"></i>:'Remove'}</button>
           </div>
 
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">

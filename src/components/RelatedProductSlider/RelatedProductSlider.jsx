@@ -39,7 +39,7 @@ export default function RelatedProductSlider({product}) {
       return (
         <swiper-slide >
         <div className="  ">
-          <div className="product shadow-lg  mt-2 ">
+          <div className="product shadow-lg  mt-2  dark:bg-slate-600">
             <Link
               to={`/productDetails/${product.id}/${product.category.name}`}
             >

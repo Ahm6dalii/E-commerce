@@ -19,6 +19,7 @@ useEffect(()=>{
         setUserLogin(false) 
         localStorage.removeItem('token')
     }
+
         
     window.addEventListener('storage',()=>{
         try {
@@ -28,6 +29,7 @@ useEffect(()=>{
 
   }  
 })
+
     },[])
 return <userContex.Provider value={{userLogin,setUserInfo,setUserLogin,isLoading,userID,userInfo}} >
         {

@@ -10,6 +10,7 @@ export default {
     flowbite.content()
 
   ],
+  darkMode:"class",
   theme: {
     container:{
       center:true,

@@ -8,7 +8,7 @@ import appStore from "../../assets/images/get-apple-store.png";
 export default function Footer() {
   return (
     <>
-      <footer className=" bg-gray-100 px-2 bottom-0 py-4 absolute start-0 end-0">
+      <footer className=" text-gray-900 px-2 bottom-0 py-4 absolute start-0 end-0 dark:text-slate-100 dark:bg-slate-800">
         <div className="mx-auto container">
           <h2 className="text-2xl font-semibold">Get the FreshCart App</h2>
           <p className="my-3">

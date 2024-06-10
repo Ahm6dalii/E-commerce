@@ -62,8 +62,8 @@ export default function Cart() {
     <title>FreshCart/Cart</title>
   </Helmet>
     </HelmetProvider>
-   {isloading ? <LoadingScreen/> : <section className=' p-3'>
-    <div className='flex items-center'>
+   {isloading ? <LoadingScreen/> : <section className=' p-3 dark:bg-slate-800 dark:text-slate-100 '>
+    <div className='flex items-center '>
     <h2 className='text-2xl font-semibold ml-2 '>
         <span>Shop Cart</span>
         <i className='fas fa-shopping-cart'></i>
@@ -77,7 +77,7 @@ export default function Cart() {
          }
 
     </div>
-      {(cardNuber == '0'|| cartDetails==null)? <div className='flex flex-col justify-center items-center py-16'>
+      {(cardNuber == '0'|| cartDetails==null)? <div className='dark:bg-slate-600 flex flex-col justify-center items-center py-16'>
         <h2 className='text-lg'>There is no product in cart yet !</h2>
         <Link to='/' className='bg-green-300 hover:bg-green-500 transition-all mt-3 p-3  text-white font-semibold rounded-full'>ADD YOUR FIRST PRODUCT TO CART</Link>
       </div>: <CartTable updateQantityItems={updateQantityItems}  setCartDetails={setCartDetails} cartDetails={cartDetails}/>}
