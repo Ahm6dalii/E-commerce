@@ -292,7 +292,7 @@ export default function Navbar() {
                                 href="#"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "dark:text-slate-100 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
+                                  "dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 {userInfo.name}
@@ -305,7 +305,7 @@ export default function Navbar() {
                                 to="/allorders"
                                 className={classNames(
                                   active ? "bg-gray-100 " : "",
-                                  " dark:text-slate-100 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
+                                  " dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Orders
@@ -318,11 +318,11 @@ export default function Navbar() {
                                 to="/cart"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "dark:text-slate-100 dark:hover:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
+                                  "dark:text-slate-100 dark:hover:bg-slate-600 dark:focus:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 <span> Cart</span>
-                                <span className="dark:text-slate-100 border rounded-full px-1 border-green-500">
+                                <span className="dark:text-slate-100  border rounded-full px-1 border-green-500">
                                   {isCardLoading ? (
                                     <i className="fa-solid fa-spin fa-spinner"></i>
                                   ) : (
@@ -338,7 +338,7 @@ export default function Navbar() {
                                 to="/wish-list"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "dark:text-slate-100 dark:hover:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
+                                  "dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 flex justify-between px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 <span> Wish List</span>
@@ -360,7 +360,7 @@ export default function Navbar() {
                                 onClick={signOut}
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "dark:text-slate-100 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700 cursor-pointer"
+                                  "dark:text-slate-100 dark:focus:bg-slate-600 dark:hover:bg-slate-600 block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                                 )}
                               >
                                 Sign out
@@ -386,8 +386,8 @@ export default function Navbar() {
                   className={classNames(
                     item.current
                       ? "bg-gray-900 text-white"
-                      : "text-gray-400 hover:bg-gray-700 hover:text-white",
-                    "block rounded-md px-3 py-2 text-base font-medium"
+                      : "text-gray-400 hover:bg-gray-700  hover:text-white",
+                    "block rounded-md px-3 py-2 dark:hover:bg-gray-500 text-base font-medium dark:text-slate-100 "
                   )}
                   aria-current={item.current ? "page" : undefined}
                 >
