@@ -7,7 +7,6 @@ import { HelmetProvider,Helmet } from 'react-helmet-async';
   
 export default function Categories() {
   let{data,isError,error,isLoading,isFetching}= useCatogery();
-  console.log(data?.data?.data)
 
     useEffect(()=>{
      

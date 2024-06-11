@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import toast from 'react-hot-toast'
 export default function Register() {
   let navigate =useNavigate()
-
+  let[isNoErro,setNoErro]= useState(true)
   const[apiError,setApiError]=useState('');
   const[isLoading,setLoading]=useState(false);
 
@@ -37,7 +37,7 @@ export default function Register() {
 let validationSchema=Yup.object().shape({
   name:Yup.string().min(3,'Name must be greater than 2 character').max(10,'Name must be less than 10 character').required('Name is required'),
   phone:Yup.string().matches(/^^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{5}$/,'Enter a valid phone number').required('Phone is required'),
-  email:Yup.string().matches(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,'Enter a valid email') .required('Email is required'),
+  email:Yup.string().matches(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,'Enter a valid email').required('Email is required'),
   password:Yup.string().min(6,'Minimun length 6 letter').required('password is required'),
   rePassword:Yup.string().oneOf([Yup.ref('password')],'password must be matched').required('password is required'),
 })
@@ -51,10 +51,18 @@ let validationSchema=Yup.object().shape({
       "rePassword":""
     },
     onSubmit:handleRegister,
-    validationSchema
-    
+    validationSchema,
+    validate
   });
  
+  function  validate(){
+    if(!formik.errors.name &&!formik.errors.phone &&  !formik.errors.email&& !formik.errors.password && !formik.errors.rePassword )
+      {
+        setNoErro(false)
+        }else{
+         setNoErro(true)
+        }
+      }
    
   return (
     <>
@@ -97,8 +105,10 @@ let validationSchema=Yup.object().shape({
   </div>
   {formik.errors.rePassword && formik.touched.rePassword &&<p className='p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400'>{formik.errors.rePassword}</p>} 
 
+  <button type="submit" disabled={isNoErro} className={`${isNoErro?'bg-slate-500 dark:bg-slate-500':'bg-green-700 dark:bg-blue-600'} text-white ms-auto block  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 sm:py-2.5 text-center  dark:hover:bg-blue-700 dark:focus:ring-blue-800`}>{isLoading? <i className='fas fa-spin fa-spinner'></i>:'Submit'}</button>
 
-  <button type="submit" className="text-white mt-3 ms-auto block bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 sm:py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{isLoading? <i className='fas fa-spin fa-spinner'></i>:'Submit'}</button>
+  {/* <button type="submit"  disabled={isNoErro}  className={`${isNoErro ? 'bg-slate-500':'bg-green-700'}text-white mt-3 ms-auto block  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 sm:py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}>{isLoading? <i className='fas fa-spin fa-spinner'></i>:'Submit'}</button> */}
+
 </form>
   </div>
     </>

@@ -11,6 +11,8 @@ export default function Login() {
   let navigate =useNavigate()
   let {setUserLogin} =useContext(userContex);
   const[isLoading,setLoading]=useState(false)
+  let[isNoErro,setNoErro]= useState(true)
+
   async function handleRegister(value){
     setLoading(true);
     await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin',value)
@@ -30,8 +32,7 @@ export default function Login() {
   );
   }
 
-let validationSchema=Yup.object().shape({
-
+let validationSchema=Yup.object().shape({ 
   email:Yup.string().matches(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,'Enter valid email') .required('email is required'),
   password:Yup.string().min(6,'Minimun length 6 letter').required('password is required'),
 })
@@ -42,9 +43,19 @@ let validationSchema=Yup.object().shape({
       "password":"",
     },
     onSubmit:handleRegister,
-    validationSchema
+    validationSchema,
+    validate
     
   });
+
+  function  validate(){
+    if(!formik.errors.email&& !formik.errors.password)
+      {
+        setNoErro(false)
+        }else{
+          setNoErro(true)
+        }
+      }
  useEffect(()=>{},[])
   
   return (
@@ -73,7 +84,7 @@ let validationSchema=Yup.object().shape({
      <p className='font-light my-2 '><span className='text-green-500'><Link to={'/reset-password'} > Reset Password</Link></span> </p>
     </div>
   
-  <button type="submit" className="text-white ms-auto block bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 sm:py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{isLoading? <i className='fas fa-spin fa-spinner'></i>:'Submit'}</button>
+  <button type="submit" disabled={isNoErro} className={`${isNoErro?'bg-slate-500 dark:bg-slate-500':'bg-green-700 dark:bg-blue-600'} text-white ms-auto block  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 sm:py-2.5 text-center  dark:hover:bg-blue-700 dark:focus:ring-blue-800`}>{isLoading? <i className='fas fa-spin fa-spinner'></i>:'Submit'}</button>
 </form>
   </div>
     </>

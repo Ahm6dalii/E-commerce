@@ -43,7 +43,6 @@ function SearchINProduct(){
 
     useEffect(()=>{
       gitAllWishList()
-      console.log(data)
     },[])
 
 

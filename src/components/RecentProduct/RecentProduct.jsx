@@ -42,12 +42,10 @@ let[wishIDs,setWishIDs] =useState([])
    await  axios.get('https://ecommerce.routemisr.com/api/v1/cart', {
       headers
   }).then(({data})=>{
-    console.log(data)
     setCardNumber(data.numOfCartItems)
   })
   .catch((err)=>setCardNumber(0)
 )
-  // console.log('ddddd',data)
     setCardLoading(false)
 
   }
