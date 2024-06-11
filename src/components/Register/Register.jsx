@@ -56,7 +56,8 @@ let validationSchema=Yup.object().shape({
   });
  
   function  validate(){
-    if(!formik.errors.name &&!formik.errors.phone &&  !formik.errors.email&& !formik.errors.password && !formik.errors.rePassword )
+    if((!formik.errors.name && formik.touched.name)&&(!formik.errors.phone&&formik.touched.phone)
+       &&(!formik.errors.email&&formik.touched.email)&& (!formik.errors.password && formik.touched.password)&& (!formik.errors.rePassword &&formik.touched.rePassword))
       {
         setNoErro(false)
         }else{
@@ -107,7 +108,6 @@ let validationSchema=Yup.object().shape({
 
   <button type="submit" disabled={isNoErro} className={`${isNoErro?'bg-slate-500 dark:bg-slate-500':'bg-green-700 dark:bg-blue-600'} text-white ms-auto block  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 sm:py-2.5 text-center  dark:hover:bg-blue-700 dark:focus:ring-blue-800`}>{isLoading? <i className='fas fa-spin fa-spinner'></i>:'Submit'}</button>
 
-  {/* <button type="submit"  disabled={isNoErro}  className={`${isNoErro ? 'bg-slate-500':'bg-green-700'}text-white mt-3 ms-auto block  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 sm:py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}>{isLoading? <i className='fas fa-spin fa-spinner'></i>:'Submit'}</button> */}
 
 </form>
   </div>
