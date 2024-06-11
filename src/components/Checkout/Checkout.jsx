@@ -26,7 +26,6 @@ let navigate=useNavigate();
    setCartId(respose?.data?.data._id)
   }
 
-  // console.log(formik.errors)
  async function makeCashOrder(value){
   setCashLoading(false)
  const opt={
@@ -72,11 +71,7 @@ let navigate=useNavigate();
 setOnlineLoading(true)
 
  }
- function handleRegister(value){
-  console.log(!formik.errors.city, 'sssss',value)
-  console.log(formik)
 
- }
   const formik=useFormik({
     initialValues:{
       shippingAddress:{

@@ -5,6 +5,7 @@ export default function CartProduct({product,setCartDetails,removeCardItems}) {
     let{getCard,removeCard,cardNuber,setCardNumber,updateQantity,removeAllCard}=useContext(CardContext)
     let [isRemoveLoading,setRemoveLoading]=useState(false);
     let[productCount,setProductCount]=useState(product.count)
+    let[isCountNegative,setCountNegative]=useState(false)
 
     async function removeCardItems(productId){
         setRemoveLoading(true)
@@ -13,13 +14,13 @@ export default function CartProduct({product,setCartDetails,removeCardItems}) {
       localStorage.setItem('cardNumber',respose.data?.numOfCartItems)
       setCartDetails(respose.data)
       setCardNumber(respose.data.numOfCartItems)
-      console.log('ssssss',respose.data)
 
     }
     async function updateQantityItems(productId,count){
         if(count<1)
             {
                 removeCardItems(productId)
+                setCountNegative(true)
               
             }else{
                 let respose= await updateQantity(productId,count);
@@ -38,16 +39,16 @@ export default function CartProduct({product,setCartDetails,removeCardItems}) {
     </td>
     <td className="px-1 py-4">
         <span className="flex justify-center items-center">
-            <button onClick={()=> {updateQantityItems(product?.product?.id,productCount-1); setProductCount(productCount-1)}} className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-5 w-5  text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+            <button disabled={isCountNegative} onClick={()=>  {updateQantityItems(product?.product?.id,productCount-1);  setProductCount(productCount-1)}} className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-5 w-5  text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                 <span className="sr-only">Quantity button</span>
                 <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16"/>
                 </svg>
             </button>
             <span className='font-semibold text-[16px] dark:text-[#eee]'>
-        {productCount}      
+        {productCount<0?0:productCount}      
              </span>
-            <button  onClick={()=> {updateQantityItems(product?.product?.id,productCount+1); setProductCount(productCount+1)}} className="inline-flex items-center justify-center h-5 w-5 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+            <button   onClick={()=> {updateQantityItems(product?.product?.id,productCount+1); setProductCount(productCount+1)}} className="inline-flex items-center justify-center h-5 w-5 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                 <span className="sr-only">Quantity button</span>
                 <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16"/>
@@ -56,7 +57,7 @@ export default function CartProduct({product,setCartDetails,removeCardItems}) {
         </span>
     </td>
     <td className="px-1 py-4 font-semibold text-gray-900 dark:text-white">
-    {product.price * productCount}
+    {product.price *(productCount<0?1:productCount)}
 
     </td>
     <td className="px-1 py-4">

@@ -203,13 +203,14 @@ export default function Navbar() {
                         {" "}
                         <i className="fa-solid fa-cart-shopping text-sm text-white"></i>
                       </Link>
-                      <p className="flex justify-center items-center absolute top-0 end-0 w-4 h-4 translate-x-1/2 -translate-y-1/2 bg-[#84CC16] text-white px-[1px] rounded-full">
+                     { cardNuber == 0? '':<p className="flex justify-center items-center absolute top-0 end-0 w-4 h-4 translate-x-1/2 -translate-y-1/2 bg-[#84CC16] text-white px-[1px] rounded-full">
                         {isCardLoading ? (
                           <i className="fa-solid fa-spin fa-spinner"></i>
                         ) : (
-                          cardNuber
+                          cardNuber == 0? '':cardNuber                                
+
                         )}
-                      </p>
+                      </p>   } 
                     </div>
                     <div className="relative hover:ring-2  hover:ring-green-200 rounded-full bg-green-500 px-2 py-1 mr-3 text-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                       <Link to="/wish-list">
@@ -217,13 +218,15 @@ export default function Navbar() {
                         <i className="fa-solid fa-heart text-sm text-white"></i>
                       </Link>
 
-                      <p className="flex  justify-center items-center absolute top-0 end-0 w-4 h-4 translate-x-1/2 -translate-y-1/2 bg-[#84CC16] text-white px-[1px] rounded-full">
+                    { wishNumber == 0? '':<p className="flex  justify-center items-center absolute top-0 end-0 w-4 h-4 translate-x-1/2 -translate-y-1/2 bg-[#84CC16] text-white px-[1px] rounded-full">
                         {isLoadingWish ? (
                           <i className="fa-solid fa-spin fa-spinner"></i>
                         ) : (
-                          wishNumber
+                          // wishNumber
+                          wishNumber                            
+
                         )}
-                      </p>
+                      </p>}
                     </div>
                  
                 {/*Dark mode toggle button  */}
@@ -322,7 +325,7 @@ export default function Navbar() {
                                   {isCardLoading ? (
                                     <i className="fa-solid fa-spin fa-spinner"></i>
                                   ) : (
-                                    cardNuber
+                                   cardNuber                                
                                   )}
                                 </span>
                               </Link>

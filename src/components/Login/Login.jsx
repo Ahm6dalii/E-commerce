@@ -18,7 +18,6 @@ export default function Login() {
     await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin',value)
     .then(function(data){
       localStorage.setItem('token',data.data.token)
-      console.log('token',data.data.token)
       setUserLogin(data.data.token);
       toast.success('login successfully !')
       setLoading(false)
@@ -49,7 +48,6 @@ let validationSchema=Yup.object().shape({
   });
 
   function  validate(){
-    console.log(formik.errors)
     if((!formik.errors.email && formik.values.email)&& (!formik.errors.password &&formik.values.password))
       {
         setNoErro(false)
