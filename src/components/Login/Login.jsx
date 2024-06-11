@@ -50,7 +50,7 @@ let validationSchema=Yup.object().shape({
 
   function  validate(){
     console.log(formik.errors)
-    if((!formik.errors.email && formik.touched.email)&& (!formik.errors.password &&formik.touched.password))
+    if((!formik.errors.email && formik.values.email)&& (!formik.errors.password &&formik.values.password))
       {
         setNoErro(false)
         }else{
